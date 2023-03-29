@@ -17,16 +17,16 @@ Preety simple to use, enter your email, password in credentials.json and update 
 
 ### Prerequisites
 
-To use this program, create a file named "credentials.json" and give your credentials in below fashion. By default index 1 item is choosen. This can be changed by changing variable entry in code. Corresponding host needs to be used as per email provider.
+To use this program, create a file named "credentials.json" and give your credentials in below format. By default index 1 item is choosen. This can be changed by changing variable *entry* in code. Corresponding host needs to be used as per email provider.
 
 ```json
 [
     {
-        "email": "email1",
+        "email": "email@gmail.com",
         "password": "app_password"
     },
     {
-        "email": "email2",
+        "email": "email@yahoo.com",
         "password": "app_password"
     }
 
