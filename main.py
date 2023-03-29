@@ -23,6 +23,7 @@ For Gmail can use: smtp.gmail.com
 For Hotmail can use: smtp.live.com
 """
 
+# To get weekday name from the int
 days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
 
 def getQuote() -> Tuple[str]:
