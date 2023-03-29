@@ -17,7 +17,7 @@ Preety simple to use, enter your email, password in credentials.json and update 
 
 ### Prerequisites
 
-To use this program, create a file named "credentials.json" and give your credentials in below format. By default index 1 item is choosen. This can be changed by changing variable *entry* in code. Corresponding host needs to be used as per email provider.
+To use this program, create a file named "credentials.json" and give your credentials in below format. By default index 0 item is choosen. This can be changed by changing variable *entry* in code. Corresponding host needs to be used as per email provider.
 
 ```json
 [
