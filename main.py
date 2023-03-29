@@ -10,18 +10,20 @@ import requests
 logging.basicConfig(level=logging.DEBUG, format='[%(levelname)s]: %(asctime)s - %(name)s - %(message)s', datefmt='%H:%M:%S')
 
 FILENAME: final = "credentials.json"
+recipients = ['ashishkandu43@gmail.com', ]
 
-host = "smtp.mail.yahoo.com" # For yahoo mail
-# host = "smtp.gmail.com" # For gmail
-port = 587
-# port = 465 # port to use if using SMTP_SSL class
+
 entry = 1 # Using a list in the FILENAME which consists of multiple dictionaries, key-value pair of email and password
-
 
 """
 For Gmail can use: smtp.gmail.com
 For Hotmail can use: smtp.live.com
 """
+
+host = "smtp.mail.yahoo.com" # For yahoo mail
+# host = "smtp.gmail.com" # For gmail
+port = 587
+# port = 465 # port to use if using SMTP_SSL class
 
 # To get weekday name from the int
 days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
@@ -84,8 +86,7 @@ if __name__ == '__main__':
     quote, author = getQuote()
     weekday = days[datetime.now().weekday()]
     message = f"Subject: {weekday} Motivation\n\n\"{quote}\" - {author}\n\nYours,\nAshish".encode('utf-8')
-    recipient = ['ashishkandu43@gmail.com', 'mailforsuman22@gmail.com', email]
-    result = send_email(from_email=email, to_email=recipient, password=password, message=message)
+    result = send_email(from_email=email, to_email=recipients, password=password, message=message)
 
     # logs in case result is not empty, for any errors
     if result:
