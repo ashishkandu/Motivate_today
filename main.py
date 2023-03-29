@@ -9,19 +9,23 @@ import requests
 
 logging.basicConfig(level=logging.DEBUG, format='[%(levelname)s]: %(asctime)s - %(name)s - %(message)s', datefmt='%H:%M:%S')
 
+import os
+ROOT_PATH = os.path.dirname(os.path.abspath(__file__))
+os.chdir(ROOT_PATH)
+
 FILENAME: final = "credentials.json"
 recipients = ['ashishkandu43@gmail.com', ]
 
 
-entry = 1 # Using a list in the FILENAME which consists of multiple dictionaries, key-value pair of email and password
+entry = 0 # Using a list in the FILENAME which consists of multiple dictionaries, key-value pair of email and password
 
 """
 For Gmail can use: smtp.gmail.com
 For Hotmail can use: smtp.live.com
 """
 
-host = "smtp.mail.yahoo.com" # For yahoo mail
-# host = "smtp.gmail.com" # For gmail
+# host = "smtp.mail.yahoo.com" # For yahoo mail
+host = "smtp.gmail.com" # For gmail
 port = 587
 # port = 465 # port to use if using SMTP_SSL class
 
@@ -74,7 +78,7 @@ def send_email(from_email: str, to_email: str, password: str, message: str):
     except Exception as e:
         logging.exception(e)
         response = {'error': e}
-    
+
     finally:
         connection.close()
         logging.info('Connection closed')
