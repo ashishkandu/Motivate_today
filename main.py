@@ -6,6 +6,7 @@ import sys
 import ssl
 from datetime import datetime
 import requests
+from email.message import Message
 
 logging.basicConfig(level=logging.DEBUG, format='[%(levelname)s]: %(asctime)s - %(name)s - %(message)s', datefmt='%H:%M:%S')
 
@@ -86,11 +87,25 @@ def send_email(from_email: str, to_email: str, password: str, message: str):
 
 
 if __name__ == '__main__':
+    
+    # Get credentials
     email, password = get_credentials()
+
+    # Fetch quote form the API
     quote, author = getQuote()
+
     weekday = days[datetime.now().weekday()]
-    message = f"Subject: {weekday} Motivation\n\n\"{quote}\" - {author}\n\nYours,\nAshish".encode('utf-8')
-    result = send_email(from_email=email, to_email=recipients, password=password, message=message)
+
+    content = f"\"{quote}\" - {author}\n\nHave a good day!\nAshish".encode('utf-8')
+    
+    # Formating  email
+    msg = Message()
+    msg['From'] = email
+    # msg['To'] = ", ".join(recipients)
+    msg['Subject'] = f"{weekday} Motivation!!"
+    msg.set_payload(content)
+
+    result = send_email(from_email=email, to_email=recipients, password=password, message=msg.as_string())
 
     # logs in case result is not empty, for any errors
     if result:
